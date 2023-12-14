@@ -18,7 +18,7 @@ func (PushPlus *PushPlus) Run(pushPlusToken string, title string, content string
 	dataMap["token"] = pushPlusToken
 	dataMap["title"] = title
 	dataMap["content"] = content
-	dataMap["template"] = "markdown"
+	dataMap["template"] = "html"
 	dataByte, _ := json.Marshal(dataMap)
 	req, _ := http.NewRequest("POST", url, bytes.NewReader(dataByte))
 	req.Header.Add("Content-Type", "application/json")
