@@ -12,12 +12,13 @@ import (
 type PushPlus struct {
 }
 
-func (PushPlus *PushPlus) Run(pushPlusToken string, title string, content string) {
+func (PushPlus *PushPlus) Run(pushPlusToken string, title string, content string, template string) {
 	url := "http://www.pushplus.plus/send/"
 	var dataMap = make(map[string]string)
 	dataMap["token"] = pushPlusToken
 	dataMap["title"] = title
 	dataMap["content"] = content
+	dataMap["template"] = "markdown"
 	dataByte, _ := json.Marshal(dataMap)
 	req, _ := http.NewRequest("POST", url, bytes.NewReader(dataByte))
 	req.Header.Add("Content-Type", "application/json")
